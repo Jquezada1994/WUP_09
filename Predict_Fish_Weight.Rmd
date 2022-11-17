@@ -130,3 +130,6 @@ The best regresor model for roach is length3 and width.
 
 The adjusted R square for Perch is 0.9372,the adjusted R square for Pike is 0.9794, and the adjusted R square for Roach is 0.821.How well the weight of the fish is based on the variables given.It shows that the Pike fish is the best because it has the biggest variable which is 0.9794 compared to roach and perch fish.
 
+
+
+
