@@ -36,7 +36,7 @@ Perch=subset(Perch,select=-Species)
 weightPerch = lm(Weight~Length1 + Length2 +Length3 + Height + Width, data = Perch)  
 summary.lm(weightPerch)
 ``` 
-
+The adjusted r square for perch is 0.9372.
 
 
 ### Best Models
@@ -70,14 +70,63 @@ The best one variable is height. The best 2 variable predictor is height and wid
  
 ## Pike
 
+```{r}
+Pike = filter (Fish,Species == 'Pike')
+Pike=subset(Pike,select=-Species)
+weightPike = lm(Weight~Length1 + Length2 +Length3 + Height + Width, data = Pike)  
+summary.lm(weightPerch)
+``` 
+
+The adjusted R square for pike fish is 0.9794.
+
 ### Best Models
 
 ### Best Two regressor model
+
+```{r}
+regsubsets.out <-
+    regsubsets(Weight ~. , data = Pike,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+```                      
+
+The best regresor model is length 1 and length 3.
 
 ## Roach
+```{r}
+Roach = filter (Fish,Species == 'Roach')
+Roach=subset(Roach,select=-Species)
+weightRoach = lm(Weight~Length1 + Length2 +Length3 + Height + Width, data = Roach)  
+summary.lm(weightRoach)
+``` 
+The adjusted r square is 0.821
+
+
 
 ### Best Models
 
 ### Best Two regressor model
+```{r}
+regsubsets.out <-
+    regsubsets(Weight ~. , data = Roach ,
+               nbest = 2,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+```     
+
+The best regresor model for roach is length3 and width.
 
 ## Final Summary Statements
+
+
+The adjusted R square for Perch is 0.9372,the adjusted R square for Pike is 0.9794, and the adjusted R square for Roach is 0.821.
+
